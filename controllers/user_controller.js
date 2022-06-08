@@ -49,3 +49,9 @@ module.exports.create = async (req, res) => {
     console.log(`Error in Create Controller ${error}`);
   }
 };
+
+// sign-in and create session
+module.exports.createSession = (req, res) => {
+  // we will authenticate user in route using middleware
+  return res.redirect("/");
+};
