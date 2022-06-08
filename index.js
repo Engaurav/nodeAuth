@@ -20,8 +20,8 @@ app.use(
   session({
     name: "node_auth",
     secret: "blahsomethng",
-    saveUninitialized: false,
-    resave: false,
+    saveUninitialized: false,   //if !user we dont save any data to cookie
+    resave: false,    //if user is there we want rewrite if no data change
     cookie: {
       maxAge: 1000 * 60 * 100,
     },
@@ -31,6 +31,8 @@ app.use(
 // we are telling app to use passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
 
 
 // use express router
