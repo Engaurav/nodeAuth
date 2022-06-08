@@ -8,6 +8,8 @@ const PORT = 8000;              //Declaring Port Number
 
 
 
+app.use(express.urlencoded());
+
 
 //setting up our view engine for ejs
 app.set('view engine', 'ejs');
