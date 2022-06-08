@@ -5,9 +5,20 @@ const mongoose = require('./config/mongoose')           // Calling Mongoose Conf
 const PORT = 8000;              //Declaring Port Number
 
 
-app.get('/', function (req, res) {
-  res.send('Hello World')
-})
+
+
+
+
+//setting up our view engine for ejs
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
+
+
+// use express router
+app.use('/', require('./routes'));
+
+
 
 
 
