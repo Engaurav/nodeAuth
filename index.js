@@ -6,10 +6,10 @@ const PORT = 8000; //Declaring Port Number
 const session = require("express-session"); //express-session automticially encrypt data and send to cookie
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
+const MongoStore = require("connect-mongo");
 
 // this is to use our post data of form
 app.use(express.urlencoded());
-
 
 //setting up our view engine for ejs
 app.set("view engine", "ejs");
@@ -20,11 +20,20 @@ app.use(
   session({
     name: "node_auth",
     secret: "blahsomethng",
-    saveUninitialized: false,   //if !user we dont save any data to cookie
-    resave: false,    //if user is there we want rewrite if no data change
+    saveUninitialized: false, //if !user we dont save any data to cookie
+    resave: false, //if user is there we want rewrite if no data change
     cookie: {
       maxAge: 1000 * 60 * 100,
     },
+    store: MongoStore.create(
+      {
+        mongoUrl: "mongodb://localhost/codeial_development",
+        autoRemove: "disabled",
+      },
+      function (err) {
+        console.log(err || "connect mongo db setup ok ");
+      }
+    ),
   })
 );
 
@@ -33,7 +42,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
-
 
 // use express router
 app.use("/", require("./routes"));

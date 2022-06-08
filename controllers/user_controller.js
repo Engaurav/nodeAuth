@@ -61,3 +61,15 @@ module.exports.createSession = (req, res) => {
   // we will authenticate user in route using middleware
   return res.redirect("/");
 };
+
+// signout use to destry the seesion
+
+module.exports.signout = (req, res) => {
+  req.logout(function (err) {
+    if (err) {
+      return;
+    }
+    res.redirect("/");
+  });
+  return res.redirect("/user/signin");
+};
