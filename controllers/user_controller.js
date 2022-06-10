@@ -6,7 +6,7 @@ module.exports.signIn = async (req, res) => {
     if (req.isAuthenticated()) {
       return res.redirect("/");
     }
-    return res.render("sign_in", {});
+    return res.render("login", {});
   } catch (error) {
     console.log(`Error in SignIn Controller ${error}`);
   }
@@ -18,7 +18,7 @@ module.exports.signUp = async (req, res) => {
     if (req.isAuthenticated()) {
       return res.redirect("/");
     }
-    return res.render("sign_up", {});
+    return res.render("register", {});
   } catch (error) {
     console.log(`Error in SignUp Controller ${error}`);
   }
@@ -43,12 +43,12 @@ module.exports.create = async (req, res) => {
             console.log("error in finding user in signing up");
             return;
           }
-          req.flash('success','User Created');
+          req.flash("success", "User Created");
           return res.redirect("/user/signin");
         });
       } else {
         // if user exist we are sending back to signup page
-        req.flash('error','User Already Exists');
+        req.flash("error", "User Already Exists");
         return res.redirect("back");
       }
     });
@@ -59,7 +59,7 @@ module.exports.create = async (req, res) => {
 
 // sign-in and create session
 module.exports.createSession = (req, res) => {
-  req.flash('success','Logged in Successful');
+  req.flash("success", "Logged in Successful");
   // we will authenticate user in route using middleware
   return res.redirect("/");
 };
@@ -67,14 +67,11 @@ module.exports.createSession = (req, res) => {
 // signout use to destry the seesion
 
 module.exports.signout = (req, res) => {
-  
-
   req.logout(function (err) {
     if (err) {
       return;
     }
-
   });
-  req.flash('success','You have Logged out!');
+  req.flash("success", "You have Logged out!");
   return res.redirect("/user/signin");
 };

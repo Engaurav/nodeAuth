@@ -7,12 +7,12 @@
     referrerpolicy="no-referrer"
   />
   <nav>
-    <ul>
+    <!-- <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/user/signin">Sign In</a></li>
       <li><a href="/user/register">Register</a></li>
       <li><a href="/user/logout">logout</a></li>
-    </ul>
+    </ul> -->
   </nav>
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"
@@ -25,7 +25,7 @@
                         new Noty({
                             theme:'relax',
                             type: 'success',
-                            layout: 'bottomRight',
+                            layout: 'topRight',
                             text:  "<%= flash.success %>",
                             timeout : 1500
                         }).show();
@@ -34,7 +34,7 @@
                         new Noty({
                             theme:'relax',
                             type: 'error',
-                            layout: 'bottomRight',
+                            layout: 'topRight',
                             text:  "<%= flash.error %>",
                             timeout : 1500
                         }).show();
