@@ -59,6 +59,6 @@ app.use(customMWare.setFlash);
 app.use("/", require("./routes"));
 
 // running project through express using port
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log("Server is running on port", PORT);
 });
