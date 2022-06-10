@@ -65,13 +65,40 @@ module.exports.createSession = (req, res) => {
 };
 
 // signout use to destry the seesion
-
-module.exports.signout = (req, res) => {
-  req.logout(function (err) {
+module.exports.signout = async (req, res) => {
+  await req.logout(function (err) {
     if (err) {
       return;
     }
+
+    req.flash("success", "Logged Out Successful");
+    return res.redirect("/user/signin");
   });
-  req.flash("success", "You have Logged out!");
-  return res.redirect("/user/signin");
+};
+
+// update controller
+module.exports.update = async function (req, res) {
+  console.log("req.user.id", req.user.id);
+  console.log("req.params.id", req.params.id);
+  if (req.user.id == req.body.id) {
+    try {
+      let user = await User.findById(req.body.id);
+      console.log(user);
+      if (user) {
+        user.name = req.body.name;
+        user.password = req.body.password;
+        user.save();
+        req.flash("success", "Profile Updated");
+        return res.redirect("back");
+      } else {
+        return res.redirect("back");
+      }
+    } catch (error) {
+      req.flash("error", error);
+      return res.redirect("back");
+    }
+  } else {
+    req.flash("error", "Unauthorised");
+    return res.redirect("back");
+  }
 };

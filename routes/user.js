@@ -11,6 +11,7 @@ const userController = require("../controllers/user_controller");
 // route to adrress
 router.get("/register", userController.signUp);
 router.post("/create", userController.create);
+router.post("/update", userController.update);
 router.get("/signin", userController.signIn);
 router.get("/logout", userController.signout);
 

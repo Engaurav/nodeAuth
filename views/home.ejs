@@ -44,18 +44,118 @@
               />
             </div>
             <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-              <div class="text-end">
-                <a href="/user/logout" class="btn btn-outline-dark">Logout</a>
-              </div><br>
               <!-- Personal Detail -->
-              <div class="card" style="width: 25rem; height: 280px">
+              <div id="user-detail-container" class="card" style="width: 25rem">
+                <div class="text-end" style="margin: 5px">
+                  <a
+                    href="/user/logout"
+                    class="btn btn-outline-secondary"
+                    style="border: none"
+                    >Logout</a
+                  >
+                </div>
                 <div class="card-body p-lg-5">
                   <h1 class="card-title">Hi,<br /><%= user.name%></h1>
                   <p class="card-text">Your Email: <b><%= user.email%></b></p>
+                  <p class="card-text">
+                    <i
+                      >Treat Yourself like Someone you loved, Beacause you are
+                      already Enough.</i
+                    >
+                  </p>
                   <br />
                   <div class="text-end">
-                    <a href="#" class="btn btn-danger">Reset Password</a>
+                    <button
+                      onclick="openResetContainer()"
+                      class="btn btn-danger"
+                    >
+                      Reset Password
+                    </button>
                   </div>
+                </div>
+              </div>
+              <div
+                id="reset-container"
+                class="card"
+                style="display: none; width: 25rem"
+              >
+                <div class="text-end" style="margin: 5px">
+                  <button
+                    onclick="closeResetContainer()"
+                    class="btn btn-outline-danger"
+                  >
+                    X
+                  </button>
+                </div>
+                <div class="card-body px-lg-5">
+                  <!-- Name input -->
+                  <form action="/user/update" method="POST">
+                    <div class="form-outline mb-2">
+                      <label class="form-label">Your Name</label>
+                      <input
+                        type="text"
+                        name="name"
+                        class="form-control form-control-lg"
+                        value="<%= user.name%>"
+                        required
+                      />
+                      <input
+                        type="text"
+                        name="id"
+                        value="<%= user._id%>"
+                        hidden
+                      />
+                    </div>
+                    <!-- Email input -->
+                    <div class="form-outline mb-2">
+                      <label class="form-label">Email address</label>
+                      <input
+                        type="email"
+                        name="email"
+                        class="form-control form-control-lg"
+                        value="<%= user.email%>"
+                        required
+                        readonly
+                      />
+                    </div>
+                    <!--New Password Password input -->
+                    <div class="form-outline mb-2">
+                      <label class="form-label">Password</label>
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        class="form-control form-control-lg"
+                        onkeyup="passwordMatch()"
+                        required
+                      />
+                    </div>
+                    <!--Confirm Password Password input -->
+                    <div class="form-outline mb-2">
+                      <label class="form-label">Confirm Password</label>
+                      <input
+                        type="password"
+                        name="confirm_password"
+                        id="confirm_password"
+                        class="form-control form-control-lg"
+                        onkeyup="passwordMatch()"
+                        required
+                      />
+                      <div
+                        id="passCheck"
+                        style="text-align: end; color: red"
+                      ></div>
+                    </div>
+                    <!-- Submit button -->
+                    <button
+                      type="submit"
+                      id="update"
+                      class="btn btn-outline-secondary btn-lg btn-block"
+                      disabled
+                    >
+                      Update
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -63,5 +163,40 @@
         </div>
       </section>
     </div>
+    <script>
+      function openResetContainer() {
+        document.getElementById("user-detail-container").style.display = "none";
+        document.getElementById("reset-container").style.display = "block";
+      }
+      function closeResetContainer() {
+        document.getElementById("user-detail-container").style.display =
+          "block";
+        document.getElementById("reset-container").style.display = "none";
+      }
+
+      function passwordMatch() {
+        let password = document.getElementById("password").value;
+        let confirm_password =
+          document.getElementById("confirm_password").value;
+        let passCheck = document.getElementById("passCheck");
+        let updateButton = document.getElementById("update");
+        // console.log(password);
+        if (password.length == 0 || confirm_password == 0) {
+          passCheck.style.display = "none";
+        } else if (confirm_password.length > 0) {
+          if (password === confirm_password) {
+            passCheck.style.display = "block";
+            passCheck.style.color = "green";
+            passCheck.innerHTML = "Password Match";
+            updateButton.removeAttribute("disabled");
+          } else {
+            passCheck.style.display = "block";
+            passCheck.style.color = "red";
+            passCheck.innerHTML = "Password do not Match..!";
+            updateButton.setAttribute("disabled", "true");
+          }
+        }
+      }
+    </script>
   </body>
 </html>
