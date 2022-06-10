@@ -8,6 +8,12 @@ const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
 const MongoStore = require("connect-mongo");
 
+// using flash for notifation
+const flash = require("connect-flash");
+const customMWare  = require('./config/middleware');
+
+
+
 // this is to use our post data of form
 app.use(express.urlencoded());
 
@@ -42,6 +48,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+
+
+// using flash notification in session cookie
+app.use(flash());
+app.use(customMWare.setFlash);
+
 
 // use express router
 app.use("/", require("./routes"));
