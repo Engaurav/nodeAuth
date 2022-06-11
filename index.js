@@ -10,9 +10,7 @@ const MongoStore = require("connect-mongo");
 
 // using flash for notifation
 const flash = require("connect-flash");
-const customMWare  = require('./config/middleware');
-
-
+const customMWare = require("./config/middleware");
 
 // this is to use our post data of form
 app.use(express.urlencoded());
@@ -33,7 +31,8 @@ app.use(
     },
     store: MongoStore.create(
       {
-        mongoUrl: "mongodb://localhost/codeial_development",
+        mongoUrl:
+          "mongodb+srv://gauravsingh323:8OlAFfvtjlWq4gYt@cluster0.guddo.mongodb.net/node_authenticate",
         autoRemove: "disabled",
       },
       function (err) {
@@ -49,11 +48,9 @@ app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
 
-
 // using flash notification in session cookie
 app.use(flash());
 app.use(customMWare.setFlash);
-
 
 // use express router
 app.use("/", require("./routes"));
