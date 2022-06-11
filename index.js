@@ -6,6 +6,7 @@ const PORT = 8000; //Declaring Port Number
 const session = require("express-session"); //express-session automticially encrypt data and send to cookie
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
+const passportGoogle = require('./config/passport-google-oauth2-strategy');
 const MongoStore = require("connect-mongo");
 
 // using flash for notifation
