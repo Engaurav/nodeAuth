@@ -5,9 +5,9 @@ const User = require('../model/user');
 
 //tell passport to use a new strategy for goodle login
 passport.use(new googleStrategy({
-    clientID : process.env.GOOGLE_CLIENT_ID ,
+    clientID : process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET ,
-    callbackURL : process.env.GOOGLE_CALLBACK_URL
+    callbackURL : process.env.GOOGLE_CALLBACK 
     },
     function(accessToken,refreshToken,profile,done){
         //find a user
