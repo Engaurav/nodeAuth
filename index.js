@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express"); //require express to run server
 const app = express();
 const mongoose = require("./config/mongoose"); // Calling Mongoose Config File
