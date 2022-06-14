@@ -13,6 +13,9 @@ const userSchema = new mongoose.Schema({
     name : {
         type: String,
         required: true,
+    },
+    secret : {
+        type: String
     }
 },{
     timestamps: true

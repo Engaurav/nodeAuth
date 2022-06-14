@@ -25,9 +25,9 @@
                         new Noty({
                             theme:'sunset',
                             type: 'success',
-                            layout: 'bottomRight',
+                            layout: 'topRight',
                             text:  "<%= flash.success %>",
-                            timeout : 1500
+                            timeout : 2000
                         }).show();
                     <%}%>
     <% if(flash.alert && flash.alert.length >0 ){ %>
@@ -36,7 +36,7 @@
                             type: 'alert',
                             layout: 'topRight',
                             text:  "<%= flash.alert %>",
-                            timeout : 1500
+                            timeout : 2000
                         }).show();
                     <%}%>
     <% if(flash.error && flash.error.length >0 ){ %>
@@ -45,7 +45,7 @@
                             type: 'error',
                             layout: 'topRight',
                             text:  "<%= flash.error %>",
-                            timeout : 1500
+                            timeout : 2000
                         }).show();
                     <%}%>
   </script>

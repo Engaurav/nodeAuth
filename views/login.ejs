@@ -43,7 +43,12 @@
                 alt="Phone image"
               />
             </div>
-            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+
+            <!-- Start: Login Conatiner Div -->
+            <div
+              class="col-md-7 col-lg-5 col-xl-5 offset-xl-1"
+              id="login-container"
+            >
               <form action="/user/create-session" method="POST">
                 <!-- Email input -->
                 <div class="form-outline mb-4">
@@ -72,7 +77,9 @@
                 </div>
 
                 <div class="text-end">
-                  <a href="#!">Forgot password?</a>
+                  <a href="#" onclick="openForgetContainer()"
+                    >Forgot password?</a
+                  >
                 </div>
 
                 <!-- Submit button -->
@@ -100,9 +107,66 @@
                 >
               </div>
             </div>
+
+            <!-- Start : Container for forget password form -->
+            <div
+              class="col-md-7 col-lg-5 col-xl-5 offset-xl-1"
+              id="forget-container"
+              style="display: none"
+            >
+              <div style="display: flex; justify-content: space-between">
+                <h2>Reset Your Password</h2>
+                <div>
+                  <button
+                    class="btn btn-outline-danger"
+                    onclick="closeForgetContainer()"
+                  >
+                    X
+                  </button>
+                </div>
+              </div>
+              <hr />
+              <br />
+
+              <form action="/user/forgetpassword" method="POST">
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label fs-3"
+                    >Enter Your Email Address</label
+                  >
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-control form-control-lg"
+                    required
+                  />
+                </div>
+                <!-- Submit button -->
+                <div class="text-end">
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-lg btn-block"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+              <hr />
+            </div>
+            <!-- End : Container for forget password form -->
           </div>
         </div>
       </section>
     </div>
+    <script>
+      function closeForgetContainer() {
+        document.getElementById("forget-container").style.display = "none";
+        document.getElementById("login-container").style.display = "block";
+      }
+      function openForgetContainer() {
+        document.getElementById("forget-container").style.display = "block";
+        document.getElementById("login-container").style.display = "none";
+      }
+    </script>
   </body>
 </html>
