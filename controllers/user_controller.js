@@ -1,5 +1,6 @@
 const User = require("../model/user");
 const crypto = require('crypto');
+const forgetLinkMail  = require("../mailers/forgetLinkMail");
 
 //controller to handle signIn route
 module.exports.signIn = async (req, res) => {
@@ -122,6 +123,7 @@ module.exports.forgetPasswordLinkCreate = async (req,res) => {
         console.log(user)
         let link = `${process.env.WEB_URL}/user/${user._id}/${time}/${secret}`
         console.log(link);
+        forgetLinkMail.forgetLinkMailer(user.email,link);
         req.flash("success","Reset Link Send to Your Email");
         return res.redirect('back')
       }else{
