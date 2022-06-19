@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express"); //require express to run server
 const app = express();
 const mongoose = require("./config/mongoose"); // Calling Mongoose Config File
@@ -7,7 +7,7 @@ const PORT = 8000; //Declaring Port Number
 const session = require("express-session"); //express-session automticially encrypt data and send to cookie
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
-const passportGoogle = require('./config/passport-google-oauth2-strategy');
+const passportGoogle = require("./config/passport-google-oauth2-strategy");
 const MongoStore = require("connect-mongo");
 
 // using flash for notifation
@@ -33,8 +33,7 @@ app.use(
     },
     store: MongoStore.create(
       {
-        mongoUrl:
-          "mongodb+srv://gauravsingh323:8OlAFfvtjlWq4gYt@cluster0.guddo.mongodb.net/node_authenticate",
+        mongoUrl: "mongodb+srv://gauravsingh323:8OlAFfvtjlWq4gYt@cluster0.guddo.mongodb.net/node_authenticate",
         autoRemove: "disabled",
       },
       function (err) {
