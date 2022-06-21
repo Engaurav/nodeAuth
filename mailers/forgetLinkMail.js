@@ -1,6 +1,6 @@
 const nodeMailer = require('../config/nodemailer');
 
-
+// mailer to send mail to emails
 exports.forgetLinkMailer = (recipient,link) => {
 
     nodeMailer.transporter.sendMail({

@@ -1,4 +1,6 @@
 <header>
+
+  <!-- cdn link for notyjs css -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
@@ -6,20 +8,28 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
-  <nav>
-    <!-- <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/user/signin">Sign In</a></li>
-      <li><a href="/user/register">Register</a></li>
-      <li><a href="/user/logout">logout</a></li>
-    </ul> -->
-  </nav>
+
+
+
+
+
+
+
+
+
+
+  <!-- cdn link for notyjs  -->
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"
     integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   ></script>
+
+
+
+
+  <!-- wrting code to flash messeage using noty js -->
   <script>
     <% if(flash.success && flash.success.length >0 ){ %>
                         new Noty({
@@ -48,5 +58,6 @@
                             timeout : 2000
                         }).show();
                     <%}%>
+
   </script>
 </header>

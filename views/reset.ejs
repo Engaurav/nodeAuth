@@ -4,44 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-      crossorigin="anonymous"
-    ></script>
+    
+    <!-- bootstrap cdn { -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <!-- } -->
 
-    <title>Document</title>
+    <!-- title of page -->
+    <title>Reset</title>
   </head>
+
+
+  <!-- body start -->
   <body>
+
+    <!-- including header file -->
     <%- include('_header') %>
     <div>
       <section class="vh-100">
         <div class="container py-5 h-100">
-          <div
-            class="row d-flex align-items-center justify-content-center h-100"
-          >
+          <div class="row d-flex align-items-center justify-content-center h-100">
+            
+            
+            <!-- div for left hand image container -->
             <div class="col-md-8 col-lg-7 col-xl-6">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-                class="img-fluid"
-                alt="Phone image"
-              />
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid" alt="Phone image"/>
             </div>
 
             <!-- Start: Login Conatiner Div -->
@@ -63,38 +52,21 @@
                   <label class="form-label fs-3">Enter Your Password</label>
                   <!-- Password input -->
                   <div class="form-outline mb-2">
-                    <input
-                      type="password"
-                      id="password"
-                      name="password"
-                      class="form-control form-control-lg"
-                      placeholder="Password"
-                      onkeyup="passwordMatch()"
-                      required
-                    />
+                    <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Password" onkeyup="passwordMatch()" required/>
                   </div>
 
                   <!--Connfirm Password input -->
                   <div class="form-outline mb-2">
-                    <input
-                      type="password"
-                      id="confirm_password"
-                      name="confirm_password"
-                      class="form-control form-control-lg"
-                      placeholder="Confirm Password"
-                      onkeyup="passwordMatch()"
-                      required
-                    />
+                    <input type="password" id="confirm_password" name="confirm_password" class="form-control form-control-lg" placeholder="Confirm Password" onkeyup="passwordMatch()" required/>
                   </div>
+
+                  <!-- div to show message that password is matched or not -->
                   <div id="passCheck" style="text-align: end; color: red"></div>
                 </div>
+                
                 <!-- Submit button -->
                 <div class="text-end">
-                  <button
-                    type="submit"
-                    id="passwordreset"
-                    class="btn btn-primary btn-lg btn-block"
-                  >
+                  <button type="submit" id="passwordreset" class="btn btn-primary btn-lg btn-block">
                     Reset
                   </button>
                 </div>
@@ -120,7 +92,16 @@
         </div>
       </section>
     </div>
+
+
+
+
+
+
+    <!-- Javascripts for this page -->
     <script>
+
+      // function to show message that pass and cnf pass is same or not in client side
       function passwordMatch() {
         let password = document.getElementById("password").value;
         let confirm_password =
@@ -143,6 +124,7 @@
           }
         }
       }
+      
     </script>
   </body>
 </html>

@@ -4,153 +4,121 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-      crossorigin="anonymous"
-    ></script>
 
-    <title>Document</title>
+    <!-- bootstrap cdn { -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <!-- } -->
+
+      <!-- title of page -->
+    <title>Login</title>
+
   </head>
+
+  <!-- body start -->
   <body>
+
+    <!-- including header file -->
     <%- include('_header') %>
+
+    <!-- adding bootrap  -->
     <div>
       <section class="vh-100">
         <div class="container py-5 h-100">
-          <div
-            class="row d-flex align-items-center justify-content-center h-100"
-          >
+          <div class="row d-flex align-items-center justify-content-center h-100">
+
+            <!-- div for left hand image container -->
             <div class="col-md-8 col-lg-7 col-xl-6">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-                class="img-fluid"
-                alt="Phone image"
-              />
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid" alt="Phone image"/>
             </div>
 
             <!-- Start: Login Conatiner Div -->
-            <div
-              class="col-md-7 col-lg-5 col-xl-5 offset-xl-1"
-              id="login-container"
-            >
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1" id="login-container">
+
+              <!-- login up form -->
               <form action="/user/create-session" method="POST">
+
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input
-                    type="email"
-                    name="email"
-                    class="form-control form-control-lg"
-                    required
-                  />
-                  <label class="form-label" for="form1Example13"
-                    >Email address</label
-                  >
+                  <input type="email" name="email" class="form-control form-control-lg" required/>
+                  <label class="form-label" for="form1Example13" >Email address</label>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                  <input
-                    type="password"
-                    name="password"
-                    class="form-control form-control-lg"
-                    required
-                  />
-                  <label class="form-label" for="form1Example23"
-                    >Password</label
-                  >
+                  <input type="password" name="password" class="form-control form-control-lg" required/>
+                  <label class="form-label" for="form1Example23" >Password</label>
                 </div>
 
+                <!-- link to show forget container -->
                 <div class="text-end">
-                  <a href="#" onclick="openForgetContainer()"
-                    >Forgot password?</a
-                  >
+                  <a href="#" onclick="openForgetContainer()" >Forgot password?</a>
                 </div>
 
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-primary btn-lg btn-block">
                   Sign in
                 </button>
+
               </form>
+              <!-- closing form div -->
+
+              <!-- line breaking -->
               <div class="divider d-flex align-items-center my-4">
                 <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
               </div>
-              <a
-                class="btn btn-lg btn-block"
-                style="background-color: #dd4b39; color: white"
-                href="/user/auth/google"
-                role="button"
-              >
-                <i class="fab fa-google me-2"></i>Sign in with Google
+
+              <!-- google sign in button -->
+              <a class="btn btn-lg btn-block" style="background-color: #dd4b39; color: white" href="/user/auth/google" role="button"> <i class="fab fa-google me-2">
+                </i>Sign in with Google
               </a>
-              <div
-                class="d-flex justify-content-between align-items-center my-4"
-              >
+
+              <!-- Create new button -->
+              <div class="d-flex justify-content-between align-items-center my-4">
                 <p class="mb-0 me-2">Don't have an account?</p>
-                <a href="/user/register" class="btn btn-outline-primary"
-                  >Create new</a
-                >
+                <a href="/user/register" class="btn btn-outline-primary">Create new</a>
               </div>
+
+
             </div>
 
             <!-- Start : Container for forget password form -->
-            <div
-              class="col-md-7 col-lg-5 col-xl-5 offset-xl-1"
-              id="forget-container"
-              style="display: none"
-            >
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1" id="forget-container" style="display: none">
+
               <div style="display: flex; justify-content: space-between">
+
+                <!-- title of box -->
                 <h2>Reset Your Password</h2>
+
+                <!-- button for closing forget link conatiner div -->
                 <div>
-                  <button
-                    class="btn btn-outline-danger"
-                    onclick="closeForgetContainer()"
-                  >
+                  <button class="btn btn-outline-danger" onclick="closeForgetContainer()">
                     X
                   </button>
                 </div>
-              </div>
-              <hr />
-              <br />
 
+              </div>
+              <hr/>
+              <br/>
+
+              <!-- form for reseting password -->
               <form action="/user/forgetpassword" method="POST">
+
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <label class="form-label fs-3"
-                    >Enter Your Email Address</label
-                  >
-                  <input
-                    type="email"
-                    name="email"
-                    class="form-control form-control-lg"
-                    required
-                  />
+                  <label class="form-label fs-3">Enter Your Email Address</label>
+                  <input type="email" name="email" class="form-control form-control-lg" required/>
                 </div>
+
                 <!-- Submit button -->
                 <div class="text-end">
-                  <button
-                    type="submit"
-                    class="btn btn-primary btn-lg btn-block"
-                  >
-                    Submit
-                  </button>
+                  <button type="submit" class="btn btn-primary btn-lg btn-block"> Submit</button>
                 </div>
               </form>
+              <!-- forget form closed -->
+
               <hr />
             </div>
             <!-- End : Container for forget password form -->
@@ -158,15 +126,22 @@
         </div>
       </section>
     </div>
+
+    <!-- Javascripts for this page -->
     <script>
+
+      // function to handle forget link to show forget link container
       function closeForgetContainer() {
         document.getElementById("forget-container").style.display = "none";
         document.getElementById("login-container").style.display = "block";
       }
+
+      // function to handle forget link to close forget link container
       function openForgetContainer() {
         document.getElementById("forget-container").style.display = "block";
         document.getElementById("login-container").style.display = "none";
       }
+
     </script>
   </body>
 </html>

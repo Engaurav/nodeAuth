@@ -1,15 +1,17 @@
 const mongoose = require("mongoose");
 
-const nodeAuthCloudDB =
-  process.env.MONGO_URL ;
-// const nodeAuthLocalDB = `mongodb://localhost:27017/node_authenticate`;       In Case of Local Database
-// Connectiong mongoose to database
-mongoose.connect(nodeAuthCloudDB);
+// you can set here url or address of your database 
+mongoose.connect(process.env.MONGO_URL);       //i have set url of cloud of mongo db
 
+
+// establishing connection of database
 const db = mongoose.connection;
 
+// if error occur during establishment of data base
 db.on("err", console.error.bind(console, "Error in Connection of DB"));
 
+
+// if database establishment is successful
 db.once("open", function () {
   console.log("Connected to Database");
 });

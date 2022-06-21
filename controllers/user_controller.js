@@ -5,10 +5,15 @@ const forgetLinkMail  = require("../mailers/forgetLinkMail");
 //controller to handle signIn route
 module.exports.signIn = async (req, res) => {
   try {
+
+    // redirecting to homepage if user is already logged in
     if (req.isAuthenticated()) {
       return res.redirect("/");
     }
+
+    // rending login page
     return res.render("login", {});
+
   } catch (error) {
     console.log(`Error in SignIn Controller ${error}`);
   }
@@ -17,9 +22,14 @@ module.exports.signIn = async (req, res) => {
 //controller to handle signUp route
 module.exports.signUp = async (req, res) => {
   try {
+
+    
+    // redirecting to homepage if user is already logged in
     if (req.isAuthenticated()) {
       return res.redirect("/");
     }
+
+    // render register page
     return res.render("register", {});
   } catch (error) {
     console.log(`Error in SignUp Controller ${error}`);
@@ -29,16 +39,20 @@ module.exports.signUp = async (req, res) => {
 //controller to handle signUp POST Data
 module.exports.create = async (req, res) => {
   try {
+
+    // checking password and confirm password
     if (req.body.password !== req.body.confirm_password) {
       return res.redirect("back");
     }
 
+    // finding user from database
     User.findOne({ email: req.body.email }, (err, user) => {
       if (err) {
         console.log("error in finding user in signing up");
         return;
       }
 
+      // if user not found 
       if (!user) {
         User.create(req.body, (err, user) => {
           if (err) {
@@ -80,12 +94,15 @@ module.exports.signout = async (req, res) => {
 
 // update controller
 module.exports.update = async function (req, res) {
-  // console.log("req.user.id", req.user.id);
-  // console.log("req.params.id", req.params.id);
+
+  // verifying user
   if (req.user.id == req.body.id) {
     try {
+
+      // finding user from db
       let user = await User.findById(req.body.id);
-      console.log(user);
+      
+      // if user found
       if (user) {
         user.name = req.body.name;
         user.password = req.body.password;
@@ -109,20 +126,26 @@ module.exports.update = async function (req, res) {
 // controller for forget password
 module.exports.forgetPasswordLinkCreate = async (req,res) => {
   try {
+    // fetching emails from body
     let email = req.body.email;
+
+    // finding user from db
     User.findOne({ email: req.body.email }, (err, user) => {
       if (err) {
         req.flash("error","User not Found~!")
         return res.redirect('back');
       }
       if(user){
-        let time = Date.now();
-        let secret = crypto.randomBytes(20).toString('hex');
-        user.secret = secret;
+
+        let time = Date.now();        //fething time to send in url to later check session time out
+        let secret = crypto.randomBytes(20).toString('hex');      //creatiing hex code for verification of lick
+        user.secret = secret;           //storing secret in db
         user.save();
-        console.log(user)
+
+        // create a link
         let link = `${process.env.WEB_URL}/user/${user._id}/${time}/${secret}`
-        console.log(link);
+
+        // sending mail link
         forgetLinkMail.forgetLinkMailer(user.email,link);
         req.flash("success","Reset Link Send to Your Email");
         return res.redirect('back')
@@ -140,6 +163,7 @@ module.exports.forgetPasswordLinkCreate = async (req,res) => {
 }
 
 
+// controller to handle forget password link page
 module.exports.forgetPasswordLinkPage = async (req,res) => {
       try {
           User.findById(req.params.id,(err,user)=>{
